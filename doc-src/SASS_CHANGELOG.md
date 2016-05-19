@@ -23,6 +23,13 @@
   function now accepts a `$bracketed` parameter that controls whether the
   returned list has brackets.
 
+* Passing a string to `call($function-name, $args...)` indicating which function to invoke is
+  now deprecated. Instead pass callable returned from `function-reference($function-name)`.
+  This allows function name resolution to be performed in the correct
+  lexical context and then invoked in a different context. This is
+  required so that the module-based resolver in Sass 4.0 will invoke the
+  correct function when calling across module boundaries.
+
 ### Backwards Incompatibilities -- Must Read!
 
 * The way [CSS variables][] are handled has changed to better correspond to the
